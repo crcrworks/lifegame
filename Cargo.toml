@@ -1,0 +1,20 @@
+[package]
+name = "life-game"
+description = "Conway's Game of Life for TUI"
+version = "0.1.0"
+edition = "2021"
+authors = ["crcrworks <crcr.works@gmail.com>"]
+license = "MIT"
+
+documentation = "https://docs.rs/life-game"
+homepage = "https://crates.io/crates/life-game"
+repository = "https://github.com/crcrworks/life-game"
+
+keywords = ["lifegame", "game", "simulation"]
+categories = ["simulation"]
+
+
+[dependencies]
+crossterm = "0.28.1"
+eyre = "0.6.12"
+vector2d = "3.1.1"
