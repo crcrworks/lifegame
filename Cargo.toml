@@ -1,14 +1,13 @@
 [package]
 name = "life-game"
 description = "Conway's Game of Life for TUI"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["crcrworks <crcr.works@gmail.com>"]
 license = "MIT"
 
-documentation = "https://docs.rs/life-game"
 homepage = "https://crates.io/crates/life-game"
-repository = "https://github.com/crcrworks/life-game"
+repository = "https://github.com/crcrworks/lifegame"
 
 keywords = ["lifegame", "game", "simulation"]
 categories = ["simulation"]
