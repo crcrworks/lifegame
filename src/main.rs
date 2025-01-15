@@ -7,7 +7,7 @@ use crossterm::{
         self, poll, Event, KeyCode, KeyEvent, KeyEventKind, MouseButton, MouseEvent, MouseEventKind,
     },
     execute,
-    style::{self, Color, Stylize},
+    style::{self, Color, ContentStyle, PrintStyledContent, Stylize},
     terminal,
 };
 use eyre::Result;
@@ -60,6 +60,7 @@ fn main() -> Result<()> {
         terminal::EnterAlternateScreen,
         cursor::Hide,
         terminal::Clear(terminal::ClearType::All),
+        terminal::DisableLineWrap,
         event::EnableMouseCapture
     )?;
 
@@ -71,14 +72,15 @@ fn main() -> Result<()> {
         } else {
             Color::Green
         };
+
         execute!(
             field.stdout,
             cursor::MoveTo(0, (field.size.y + 1) as u16),
             style::Print(
-                format!(
-                "{:4} | L-click: put | R-click: remove | Space: play/pause | s: step | r: restore | c: clear | q: quit", field.step_count)
-                    .with(color)
-            )
+            format!(
+                "{:4} | L-click: put | R-click: remove | Space: play/pause | s: step | r: restore | c: clear | q: quit",
+                field.step_count
+            ).with(color))
         )?;
 
         if field.is_auto_play_enabled {
@@ -169,6 +171,7 @@ fn main() -> Result<()> {
         field.stdout,
         cursor::Show,
         event::DisableMouseCapture,
+        terminal::EnableLineWrap,
         terminal::LeaveAlternateScreen,
     )?;
     Ok(())
